@@ -8,6 +8,8 @@ function App() {
   const [yourExpense, setYourExpense] = useState('');
   const [friendExpense, setFriendExpense] = useState('');
   const [paymentOption, setPaymentOption] = useState('you');
+  const [splitBillWith, setSplitBillWith] = useState(undefined)
+
 
   const handleBillValueChange = (e) => {
     setBillValue(e.target.value);
@@ -35,12 +37,14 @@ function App() {
     setYourExpense('')
   };
 
+  const handleFriendSelected = (name) => console.log(name)
+
   return (
     <>
       <div className="grid grid-cols-2 p-10">
         <div className="bg-[#fefefe] text-[#1a1a1a] w-fit p-3 rounded-md">
           {FriendsData.map(({ image, name, statusWithThisFriend }) => {
-            return <Friend image={image} name={name} statusWithThisFriend={statusWithThisFriend} />;
+            return <Friend image={image} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
           })}
         </div>
         {/* form section */}

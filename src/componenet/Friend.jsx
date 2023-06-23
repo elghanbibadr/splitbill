@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Friend = (props) => {
+    const handleFriendSelected = () => props.handleFriendSelected(props.name)
     return (
         <div className=' max-w-[410px]  my-8'>
             <div className="flex justify-between">
@@ -11,7 +12,7 @@ const Friend = (props) => {
                         <p className='mr-5' >{props.statusWithThisFriend}</p>
                     </div>
                 </div>
-                <button className='text-white'>select</button>
+                <button onClick={handleFriendSelected} className='text-white'>select</button>
             </div>
         </div>
     )
