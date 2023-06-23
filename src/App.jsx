@@ -37,7 +37,7 @@ function App() {
     setYourExpense('')
   };
 
-  const handleFriendSelected = (name) => console.log(name)
+  const handleFriendSelected = (name) => setSplitBillWith(name)
 
   return (
     <>
@@ -48,8 +48,8 @@ function App() {
           })}
         </div>
         {/* form section */}
-        <form className="bg-[#fefefe] text-[#1a1a1a] w-fit p-6 rounded-md" onSubmit={handleSubmit}>
-          <h1 className="text-xl">SPLIT A BILL WITH ANTHONY</h1>
+        {splitBillWith && <form className="bg-[#fefefe] text-[#1a1a1a] w-fit p-6 rounded-md" onSubmit={handleSubmit}>
+          <h1 className="text-xl">SPLIT A BILL WITH {splitBillWith}</h1>
           <div className="mt-3">
             <label htmlFor="billValue">Bill value </label>
             <input
@@ -90,7 +90,7 @@ function App() {
           <button className="text-white mt-7 bg-[#1a1a1a]" type="submit">
             Split bill
           </button>
-        </form>
+        </form>}
       </div>
     </>
   );
