@@ -32,6 +32,15 @@ function App() {
     // Perform splitting bill logic here using the state values
     // You can access billValue, yourExpense, friendExpense, and paymentOption here
     console.log('Splitting bill...');
+
+    FriendsData.map((friend) => {
+      if (friend.name === splitBillWith) {
+        console.log("true")
+        return { ...friend, name: 'changed status' }; // Replace 'New Name' with the desired new name value
+      }
+      return friend;
+    });
+
     setBillValue('')
     setFriendExpense('')
     setYourExpense('')
@@ -39,6 +48,9 @@ function App() {
 
   const handleFriendSelected = (name) => setSplitBillWith(name)
 
+
+
+  console.log(FriendsData)
   return (
     <>
       <div className="grid grid-cols-2 p-10">
