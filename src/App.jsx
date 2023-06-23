@@ -7,9 +7,11 @@ function App() {
 
   return (
     <>
-      {FriendsData.map(({ image, name, statusWithThisFriend }) => {
-        return <Friend image={image} name={name} statusWithThisFriend={statusWithThisFriend} />
-      })}
+      <div className='bg-[#fefefe] text-[#1a1a1a] w-fit p-3 rounded-md'>
+        {FriendsData.map(({ image, name, statusWithThisFriend }) => {
+          return <Friend image={image} name={name} statusWithThisFriend={statusWithThisFriend} />
+        })}
+      </div>
 
     </>
   )

@@ -2,16 +2,16 @@ import React from 'react'
 
 const Friend = (props) => {
     return (
-        <div className='text-white max-w-[410px] my-8'>
+        <div className=' max-w-[410px]  my-8'>
             <div className="flex justify-between">
                 <div className='flex'>
                     <img className=' mx-5 h-12 w-12 object-fill rounded-full' src={props.image} alt="" />
-                    <div className='text-left'>
-                        <h2>{props.name}</h2>
+                    <div className='text-left '>
+                        <h2 className='text-lg font-medium'>{props.name}</h2>
                         <p className='mr-5' >{props.statusWithThisFriend}</p>
                     </div>
                 </div>
-                <button>select</button>
+                <button className='text-white'>select</button>
             </div>
         </div>
     )
