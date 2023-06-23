@@ -1,11 +1,17 @@
 import { useState } from 'react'
-
+import { FriendsData } from "../src/FriendsData"
+import Friend from './componenet/Friend'
 import './App.css'
 
 function App() {
 
   return (
-    <h1>hello world</h1>
+    <>
+      {FriendsData.map(({ image, name, statusWithThisFriend }) => {
+        return <Friend image={image} name={name} statusWithThisFriend={statusWithThisFriend} />
+      })}
+
+    </>
   )
 }
 
