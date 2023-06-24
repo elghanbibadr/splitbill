@@ -41,11 +41,10 @@ const SplitBillForm = (props) => {
         setYourExpense('')
     };
 
-
     return (
         <>
-            {props.splitBillWith && <form className="bg-[#fefefe] text-[#1a1a1a] w-fit p-6 rounded-md" onSubmit={handleSubmit}>
-                <h1 className="text-xl">SPLIT A BILL WITH {props.splitBillWith}</h1>
+            <form className="bg-[#fefefe] text-[#1a1a1a] w-fit p-6 rounded-md" onSubmit={handleSubmit}>
+                <h1 className="text-xl">SPLIT A BILL WITH {props.splitBillWith.name}</h1>
                 <div className="mt-3">
                     <label htmlFor="billValue">Bill value </label>
                     <input
@@ -67,7 +66,7 @@ const SplitBillForm = (props) => {
                     />
                 </div>
                 <div className="mt-3">
-                    <label htmlFor="friendExpense">{props.splitBillWith} expense </label>
+                    <label htmlFor="friendExpense">{props.splitBillWith.name} expense </label>
                     <input
                         className="bg-transparent border mx-3 border-black rounded-md"
                         id="friendExpense"
@@ -86,7 +85,7 @@ const SplitBillForm = (props) => {
                 <Button type="submit">
                     Split bill
                 </Button>
-            </form>}
+            </form>
         </>
     )
 }
