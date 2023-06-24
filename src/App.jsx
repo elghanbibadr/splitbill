@@ -7,9 +7,8 @@ function App() {
   const [billValue, setBillValue] = useState('');
   const [yourExpense, setYourExpense] = useState('');
   const [friendExpense, setFriendExpense] = useState('');
-  const [paymentOption, setPaymentOption] = useState('you');
+  const [thePersonWhoWouldPay, seThePersonWhoWouldPay] = useState('you');
   const [splitBillWith, setSplitBillWith] = useState(undefined)
-  const [updatedFriend, setUpdatedFriend] = useState(undefined)
   const [data, setData] = useState(FriendsData)
 
 
@@ -26,7 +25,7 @@ function App() {
   };
 
   const handlePaymentOptionChange = (e) => {
-    setPaymentOption(e.target.value);
+    seThePersonWhoWouldPay(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -35,27 +34,24 @@ function App() {
     // You can access billValue, yourExpense, friendExpense, and paymentOption here
     console.log('Splitting bill...');
 
-    // FriendsData.map((friend) => {
-    //   if (friend.name === splitBillWith) {
-    //     const dataArray = [...data];
-    //     const index = dataArray.findIndex(item => item.name === splitBillWith);
-    //     dataArray[index].statusWithThisFriend = "hello world";
-    //     console.log("dataarray" + dataArray)
-    //     setData(dataArray)
-    //   }
-    // });
     const updatedData = FriendsData.map(friend => {
       if (friend.name === splitBillWith) {
-        return { ...friend, statusWithThisFriend: "hello world" };
+        return { ...friend, statusWithThisFriend: `${thePersonWhoWouldPay === "you" ? splitBillWith + " owes you " + friendExpense : "You owe " + splitBillWith + " " + yourExpense}£` };
+
+        // return { ...friend, statusWithThisFriend: ` ${thePersonWhoWouldPay === "You" ? splitBillWith + "ows yui" + (billValue - yourExpense)} `} ;
       }
       return friend;
     });
 
     setData(updatedData);
 
-    setBillValue('')
-    setFriendExpense('')
-    setYourExpense('')
+    console.log(billValue)
+    console.log(thePersonWhoWouldPay)
+    console.log(friendExpense)
+    console.log(yourExpense)
+    // setBillValue('')
+    // setFriendExpense('')
+    // setYourExpense('')
   };
 
   const handleFriendSelected = (name) => setSplitBillWith(name)
@@ -105,7 +101,7 @@ function App() {
           </div>
           <div>
             <label htmlFor="paymentOption">Who's paying the bill</label>
-            <select id="paymentOption" value={paymentOption} onChange={handlePaymentOptionChange}>
+            <select id="paymentOption" value={thePersonWhoWouldPay} onChange={handlePaymentOptionChange}>
               <option value="you">You</option>
               <option value="friend">Friend</option>
             </select>
