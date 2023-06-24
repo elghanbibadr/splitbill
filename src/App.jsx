@@ -12,21 +12,20 @@ function App() {
   const [data, setData] = useState(FriendsData)
 
 
-  const handleFriendSelected = (name) => setSplitBillWith(name)
+  const handleFriendSelected = (friendId) => setSplitBillWith(friendId)
   const handleDataChanged = (items) => setData(items)
 
   return (
     <>
       <div className="grid grid-cols-2 p-10">
         <div className="bg-[#fefefe] text-[#1a1a1a] w-fit p-3 rounded-md">
-          {data.map(({ image, name, statusWithThisFriend, color }) => {
-            return <Friend image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
+          {data.map(({ id, image, name, statusWithThisFriend, color }) => {
+            return <Friend id={id} key={id} image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
           })}
         </div>
-        {/* form section */}
         <SplitBillForm splitBillWith={splitBillWith} handleDataChanged={handleDataChanged} />
+        <AddFriendForm setData={setData} />
       </div>
-      <AddFriendForm />
     </>
   );
 }

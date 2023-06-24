@@ -1,7 +1,8 @@
 import React from 'react'
 
 const Friend = (props) => {
-    const handleFriendSelected = () => props.handleFriendSelected(props.name)
+    const handleFriendSelected = () => props.handleFriendSelected(props.id)
+
     return (
         <div className=' max-w-[410px]  my-8'>
             <div className="flex justify-between">
