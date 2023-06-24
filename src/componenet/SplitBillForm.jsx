@@ -29,13 +29,13 @@ const SplitBillForm = (props) => {
 
         const updatedData = FriendsData.map(friend => {
             if (friend.id === props.splitBillWith.id) {
-                const status = `${thePersonWhoWouldPay === "you" ? props.splitBillWith.name + " owes you " + friendExpense : "You owe " + props.splitBillWith.name + " " + yourExpense}£`
-                return { ...friend, statusWithThisFriend: status, color: status.startsWith('You') ? ' text-red-500 ' : " text-green-500" };
+                // const status = `${thePersonWhoWouldPay === "you" ? props.splitBillWith.name + " owes you " + friendExpense : "You owe " + props.splitBillWith.name + " " + yourExpense}£`
+                return { ...friend, balance: billValue - yourExpense, };
             }
             return friend;
         });
 
-        props.handleDataChanged(updatedData);
+        props.onSplitBillWithFriend(updatedData);
         // setBillValue('')
         // setFriendExpense('')
         // setYourExpense('')

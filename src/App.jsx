@@ -19,6 +19,7 @@ function App() {
     setFriendAdded(true)
   }
 
+  const handleBillSplited = (data) => setData(data)
   return (
     <>
       <div className="md:grid md:grid-cols-2 p-10">
@@ -27,7 +28,7 @@ function App() {
             return <Friend id={id} key={id} image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} balance={balance} />;
           })}
         </div>
-        {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} handleDataChanged={handleDataChanged} />}
+        {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} onSplitBillWithFriend={handleBillSplited} />}
         {!friendAdded && <AddFriendForm onAddFriend={handleFriendAdded} />}
       </div>
     </>

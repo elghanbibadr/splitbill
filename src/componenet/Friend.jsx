@@ -10,7 +10,9 @@ const Friend = (props) => {
                     <img className=' mx-5 h-12 w-12 object-fill rounded-full' src={props.image} alt="" />
                     <div className='text-left '>
                         <h2 className='text-lg font-medium'>{props.name}</h2>
-                        <p className={`mr-5 ${props.color}`} >{props.statusWithThisFriend}</p>
+                        {props.balance > 0 && <p className={`mr-5 text-green-500`} >{` ${props.name} ows you ${props.balance}£`}</p>}
+                        {props.balance < 0 && <p className={`mr-5 text-red-500`}> {`   you ows ${props.name}  ${props.balance}£`}</p>}
+                        {props.balance === 0 && <p className={`mr-5`}> {`   you and  ${props.name} are even`}</p>}
                     </div>
                 </div>
                 <button onClick={handleFriendSelected} className='text-white'>select</button>
