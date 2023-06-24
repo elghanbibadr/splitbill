@@ -13,10 +13,13 @@ const AddFriendForm = (props) => {
         props.onAddFriend({
             id,
             image: `${friendImage}?=${id}`,
-            name: "Jack ",
-            statusWithThisFriend: "you and Jack are even",
+            name: friendName,
+            balance: 0,
         })
+        setFriendName('')
     }
+
+
     return (
         <form onSubmit={handleFriendAdded} className='bg-[#fefefe] text-[#1a1a1a]  mt-5  row-start-2 w-fit p-3 rounded-md'>
             <div className="mt-3 flex ">
