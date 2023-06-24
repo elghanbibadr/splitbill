@@ -8,7 +8,7 @@ const AddFriendForm = (props) => {
 
     const handleFriendAdded = (e) => {
         e.preventDefault();
-        if (!friendImage || !friendImage) return;
+        if (!friendImage || !friendName) return;
         const id = crypto.randomUUID()
         props.onAddFriend({
             id,

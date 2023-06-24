@@ -9,11 +9,15 @@ import './App.css';
 function App() {
 
   const [splitBillWith, setSplitBillWith] = useState(undefined)
+  const [friendAdded, setFriendAdded] = useState(false)
   const [data, setData] = useState(FriendsData)
 
 
   const handleFriendSelected = (friendToSplitBillWith) => setSplitBillWith({ id: friendToSplitBillWith.id, name: friendToSplitBillWith.name, });
-  const handleFriendAdded = (friend) => setData(prv => [...prv, friend])
+  const handleFriendAdded = (friend) => {
+    setData(prv => [...prv, friend])
+    setFriendAdded(true)
+  }
 
   return (
     <>
@@ -24,7 +28,7 @@ function App() {
           })}
         </div>
         {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} handleDataChanged={handleDataChanged} />}
-        <AddFriendForm onAddFriend={handleFriendAdded} />
+        {!friendAdded && <AddFriendForm onAddFriend={handleFriendAdded} />}
       </div>
     </>
   );
