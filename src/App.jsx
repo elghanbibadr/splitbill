@@ -13,7 +13,7 @@ function App() {
 
 
   const handleFriendSelected = (friendToSplitBillWith) => setSplitBillWith({ id: friendToSplitBillWith.id, name: friendToSplitBillWith.name, });
-  const handleDataChanged = (items) => setData(items)
+  const handleFriendAdded = (friend) => setData(prv => [...prv, friend])
 
   return (
     <>
@@ -24,7 +24,7 @@ function App() {
           })}
         </div>
         {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} handleDataChanged={handleDataChanged} />}
-        <AddFriendForm setData={setData} />
+        <AddFriendForm onAddFriend={handleFriendAdded} />
       </div>
     </>
   );
