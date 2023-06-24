@@ -12,14 +12,17 @@ function App() {
   const [friendAdded, setFriendAdded] = useState(false)
   const [data, setData] = useState(FriendsData)
 
-
+  console.log(data)
   const handleFriendSelected = (friendToSplitBillWith) => setSplitBillWith({ id: friendToSplitBillWith.id, name: friendToSplitBillWith.name, });
   const handleFriendAdded = (friend) => {
     setData(prv => [...prv, friend])
     setFriendAdded(true)
   }
 
-  const handleBillSplited = (data) => setData(data)
+  const handleBillSplited = (updatedFriendsData) => {
+    console.log(updatedFriendsData)
+    setData(updatedFriendsData)
+  }
   return (
     <>
       <div className="md:grid md:grid-cols-2 p-10">
@@ -28,7 +31,7 @@ function App() {
             return <Friend id={id} key={id} image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} balance={balance} />;
           })}
         </div>
-        {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} onSplitBillWithFriend={handleBillSplited} />}
+        {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} onSplitBillWithFriend={handleBillSplited} friendsData={data} />}
         {!friendAdded && <AddFriendForm onAddFriend={handleFriendAdded} />}
       </div>
     </>
