@@ -28,17 +28,17 @@ const SplitBillForm = (props) => {
         e.preventDefault();
 
         const updatedData = FriendsData.map(friend => {
-            if (friend.id === props.id) {
-                const status = `${thePersonWhoWouldPay === "you" ? props.splitBillWith + " owes you " + friendExpense : "You owe " + splitBillWith + " " + yourExpense}£`
+            if (friend.id === props.splitBillWith.id) {
+                const status = `${thePersonWhoWouldPay === "you" ? props.splitBillWith.name + " owes you " + friendExpense : "You owe " + props.splitBillWith.name + " " + yourExpense}£`
                 return { ...friend, statusWithThisFriend: status, color: status.startsWith('You') ? ' text-red-500 ' : " text-green-500" };
             }
             return friend;
         });
 
         props.handleDataChanged(updatedData);
-        setBillValue('')
-        setFriendExpense('')
-        setYourExpense('')
+        // setBillValue('')
+        // setFriendExpense('')
+        // setYourExpense('')
     };
 
     return (
@@ -79,7 +79,7 @@ const SplitBillForm = (props) => {
                     <label htmlFor="paymentOption">Who's paying the bill</label>
                     <select id="paymentOption" value={thePersonWhoWouldPay} onChange={handlePaymentOptionChange}>
                         <option value="you">You</option>
-                        <option value="friend">Friend</option>
+                        <option value="friend">{props.splitBillWith.name}</option>
                     </select>
                 </div>
                 <Button type="submit">
