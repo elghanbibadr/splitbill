@@ -38,24 +38,18 @@ function App() {
       if (friend.name === splitBillWith) {
         const status = `${thePersonWhoWouldPay === "you" ? splitBillWith + " owes you " + friendExpense : "You owe " + splitBillWith + " " + yourExpense}£`
         return { ...friend, statusWithThisFriend: status, color: status.startsWith('You') ? ' text-red-500 ' : " text-green-500" };
-
-        // return { ...friend, statusWithThisFriend: ` ${thePersonWhoWouldPay === "You" ? splitBillWith + "ows yui" + (billValue - yourExpense)} `} ;
       }
       return friend;
     });
 
     setData(updatedData);
 
-    console.log(billValue)
-    console.log(thePersonWhoWouldPay)
-    console.log(friendExpense)
-    console.log(yourExpense)
-    // setBillValue('')
-    // setFriendExpense('')
-    // setYourExpense('')
+
+    setBillValue('')
+    setFriendExpense('')
+    setYourExpense('')
   };
 
-  console.log(data)
   const handleFriendSelected = (name) => setSplitBillWith(name)
 
 
