@@ -23,8 +23,8 @@ function App() {
     <>
       <div className="md:grid md:grid-cols-2 p-10">
         <div className="bg-[#fefefe] text-[#1a1a1a] w-fit p-3 rounded-md">
-          {data.map(({ id, image, name, statusWithThisFriend, color }) => {
-            return <Friend id={id} key={id} image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
+          {data.map(({ id, image, name, balance, color }) => {
+            return <Friend id={id} key={id} image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} balance={balance} />;
           })}
         </div>
         {splitBillWith && <SplitBillForm splitBillWith={splitBillWith} handleDataChanged={handleDataChanged} />}
