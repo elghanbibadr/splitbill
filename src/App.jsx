@@ -36,7 +36,8 @@ function App() {
 
     const updatedData = FriendsData.map(friend => {
       if (friend.name === splitBillWith) {
-        return { ...friend, statusWithThisFriend: `${thePersonWhoWouldPay === "you" ? splitBillWith + " owes you " + friendExpense : "You owe " + splitBillWith + " " + yourExpense}£` };
+        const status = `${thePersonWhoWouldPay === "you" ? splitBillWith + " owes you " + friendExpense : "You owe " + splitBillWith + " " + yourExpense}£`
+        return { ...friend, statusWithThisFriend: status, color: status.startsWith('You') ? ' text-red-500 ' : " text-green-500" };
 
         // return { ...friend, statusWithThisFriend: ` ${thePersonWhoWouldPay === "You" ? splitBillWith + "ows yui" + (billValue - yourExpense)} `} ;
       }
@@ -54,6 +55,7 @@ function App() {
     // setYourExpense('')
   };
 
+  console.log(data)
   const handleFriendSelected = (name) => setSplitBillWith(name)
 
 
@@ -62,8 +64,8 @@ function App() {
     <>
       <div className="grid grid-cols-2 p-10">
         <div className="bg-[#fefefe] text-[#1a1a1a] w-fit p-3 rounded-md">
-          {data.map(({ image, name, statusWithThisFriend }) => {
-            return <Friend image={image} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
+          {data.map(({ image, name, statusWithThisFriend, color }) => {
+            return <Friend image={image} color={color} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
           })}
         </div>
         {/* form section */}
@@ -90,7 +92,7 @@ function App() {
             />
           </div>
           <div className="mt-3">
-            <label htmlFor="friendExpense">Anthony's expense </label>
+            <label htmlFor="friendExpense">{splitBillWith} expense </label>
             <input
               className="bg-transparent border mx-3 border-black rounded-md"
               id="friendExpense"
