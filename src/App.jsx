@@ -9,6 +9,8 @@ function App() {
   const [friendExpense, setFriendExpense] = useState('');
   const [paymentOption, setPaymentOption] = useState('you');
   const [splitBillWith, setSplitBillWith] = useState(undefined)
+  const [updatedFriend, setUpdatedFriend] = useState(undefined)
+  const [data, setData] = useState(FriendsData)
 
 
   const handleBillValueChange = (e) => {
@@ -33,13 +35,23 @@ function App() {
     // You can access billValue, yourExpense, friendExpense, and paymentOption here
     console.log('Splitting bill...');
 
-    FriendsData.map((friend) => {
+    // FriendsData.map((friend) => {
+    //   if (friend.name === splitBillWith) {
+    //     const dataArray = [...data];
+    //     const index = dataArray.findIndex(item => item.name === splitBillWith);
+    //     dataArray[index].statusWithThisFriend = "hello world";
+    //     console.log("dataarray" + dataArray)
+    //     setData(dataArray)
+    //   }
+    // });
+    const updatedData = FriendsData.map(friend => {
       if (friend.name === splitBillWith) {
-        console.log("true")
-        return { ...friend, name: 'changed status' }; // Replace 'New Name' with the desired new name value
+        return { ...friend, statusWithThisFriend: "hello world" };
       }
       return friend;
     });
+
+    setData(updatedData);
 
     setBillValue('')
     setFriendExpense('')
@@ -50,12 +62,11 @@ function App() {
 
 
 
-  console.log(FriendsData)
   return (
     <>
       <div className="grid grid-cols-2 p-10">
         <div className="bg-[#fefefe] text-[#1a1a1a] w-fit p-3 rounded-md">
-          {FriendsData.map(({ image, name, statusWithThisFriend }) => {
+          {data.map(({ image, name, statusWithThisFriend }) => {
             return <Friend image={image} name={name} handleFriendSelected={handleFriendSelected} statusWithThisFriend={statusWithThisFriend} />;
           })}
         </div>
