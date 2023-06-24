@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Friend = (props) => {
-    console.log(props.color)
     const handleFriendSelected = () => props.handleFriendSelected(props.name)
     return (
         <div className=' max-w-[410px]  my-8'>

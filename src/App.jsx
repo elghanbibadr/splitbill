@@ -53,7 +53,6 @@ function App() {
   const handleFriendSelected = (name) => setSplitBillWith(name)
 
 
-
   return (
     <>
       <div className="grid grid-cols-2 p-10">
